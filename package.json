@@ -1,0 +1,8 @@
+{
+  "name": "Cypress_JS",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "*"
+  }
+}
