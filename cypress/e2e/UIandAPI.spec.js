@@ -1,5 +1,6 @@
 import RegisterPage from "../pages/RegisterPage";
 import ToDoPage from "../pages/ToDoPage";
+import {faker} from "@faker-js/faker";
 
 describe('Combine UI and API', () => {
     const registerPage = new RegisterPage();
@@ -13,11 +14,22 @@ describe('Combine UI and API', () => {
         cy.wait('@register').then((reg) => {
             expect(reg.response.statusCode).to.equal(201)
             let token = reg.response.body.access_token;
-            registerPage.postRequest(token);
+            todoPage.createTaskUsingAPI(token);
         });
 
         todoPage.goTo();
         todoPage.locators.addAnewTodoText().should('have.text', 'Add a new Todo');
+        todoPage.deleteTodo();
+        todoPage.locators.noTodosMessage().should((el) => {
+            expect(el.text()).to.equal('No Available Todos')
+        })
+    });
+    it('should combine API and UI', () => {
+        registerPage.registerUsingAPI().then((response)=>{
+           todoPage.createTaskUsingAPI(response.body.access_token);
+        })
+        todoPage.goTo();
+        todoPage.locators.welcomeMessage().should('be.visible');
         todoPage.deleteTodo();
         todoPage.locators.noTodosMessage().should((el) => {
             expect(el.text()).to.equal('No Available Todos')

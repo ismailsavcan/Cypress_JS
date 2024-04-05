@@ -45,17 +45,18 @@ export default class RegisterPage {
             method: 'POST'
         })
     }
-    postRequest(token){
+    registerUsingAPI(){
        return cy.request({
             method: 'POST',
-            url: 'https://todo.qacart.com/api/v1/tasks',
+            url: 'https://todo.qacart.com/api/v1/users/register',
             body: {
-                item: "Learn",
-                isCompleted: false
+
+                email: faker.internet.email(),
+                password: "1234Ali@",
+                firstName: "Esmeralda",
+                lastName: "Effertz"
+
             },
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
         })
     }
 }
