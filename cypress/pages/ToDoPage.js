@@ -1,5 +1,4 @@
 import testData from "../fixtures/testData.json";
-import * as url from "url";
 
 export default class ToDoPage {
 

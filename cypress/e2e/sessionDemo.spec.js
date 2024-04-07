@@ -8,10 +8,6 @@ describe('Create new ToDO ', () => {
     beforeEach(() => {
         todoPage = new ToDoPage();
         loginPage = new LoginPage();
-        /*
-        loginPage.goTo();
-        loginPage.login();
-         */
         cy.login(testData.email,testData.password);
     })
 
