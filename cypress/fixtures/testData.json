@@ -2,5 +2,6 @@
   "name": "Name_Test",
   "lastName": "LastName_Test",
   "email": "test_name@mail7.io",
-  "password": "123456wQ@"
+  "password": "123456wQ@",
+  "api_baseUrl": "https://todo.qacart.com/api/v1"
 }
