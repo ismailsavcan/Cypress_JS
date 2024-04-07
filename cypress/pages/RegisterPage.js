@@ -48,14 +48,12 @@ export default class RegisterPage {
     registerUsingAPI(){
        return cy.request({
             method: 'POST',
-            url: 'https://todo.qacart.com/api/v1/users/register',
+            url: `${testData.api_baseUrl+'/users/register'}`,
             body: {
-
                 email: faker.internet.email(),
-                password: "1234Ali@",
-                firstName: "Esmeralda",
-                lastName: "Effertz"
-
+                password: testData.password,
+                firstName: testData.name,
+                lastName: testData.lastName
             },
         })
     }

@@ -1,4 +1,18 @@
-
+import LoginPage from "../pages/LoginPage";
+Cypress.Commands.add('login', (username , password) => {
+    const loginPage=new LoginPage();
+    cy.session([username, password], () => {
+            cy.visit('/login');
+            loginPage.locators.emailInput().type(username,{log:false});
+            loginPage.locators.passwordInput().type(password,{log:false});
+            loginPage.locators.loginButton().click();
+            cy.location('pathname').should('eq','/todo');
+        },
+        {
+            cacheAcrossSpecs:true
+        }
+    )
+})
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

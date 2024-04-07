@@ -1,4 +1,5 @@
-import {th} from "@faker-js/faker";
+import testData from "../fixtures/testData.json";
+import * as url from "url";
 
 export default class ToDoPage {
 
@@ -6,7 +7,7 @@ export default class ToDoPage {
         welcomeMessage:()=>cy.get('[data-testid="welcome"]'),
         deleteButton:()=>cy.get('[data-testid="delete"]'),
         addAnewTodoText:()=>cy.get('.sc-hHLeRK'),
-        plusAddNewToDoButton:()=>cy.get('.sc-idiyUo > .MuiButtonBase-root'),
+        plusAddNewToDoButton:()=>cy.get('[data-testid="add"]'),
         noTodosMessage:()=>cy.get('[data-testid="no-todos"]'),
         todoItem:()=>cy.get('[data-testid="new-todo"]'),
         createAnewToDoHeader:()=>cy.get('[data-testid="header"]'),
@@ -61,7 +62,7 @@ export default class ToDoPage {
     createTaskUsingAPI(token){
         return cy.request({
             method: 'POST',
-            url: 'https://todo.qacart.com/api/v1/tasks',
+            url:`${testData.api_baseUrl+'/tasks'}`,
             body: {
                 item: "Make Demo",
                 isCompleted: false
