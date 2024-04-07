@@ -1,6 +1,5 @@
 import RegisterPage from "../pages/RegisterPage";
 import ToDoPage from "../pages/ToDoPage";
-import {faker} from "@faker-js/faker";
 
 describe('Combine UI and API', () => {
     const registerPage = new RegisterPage();
